@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "API that returns average color from an image url.",
   "main": "index.js",
+	"type":"module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +11,7 @@
   "author": "Animesh Nath",
   "license": "ISC",
   "dependencies": {
-    "express": "latest"
+    "express": "latest",
+    "fast-average-color-node": "^2.6.0"
   }
 }
