@@ -2,7 +2,7 @@ const querystring = require('querystring');
 const express = require('express');
 const app = express();
 
-app.get('/*', (req, res) => { 
+app.get('/api/*', (req, res) => { 
 	const url = req.params[0];
 	const queries = querystring.stringify(req.query);
   fetch(url + "?" + queries)
