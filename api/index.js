@@ -26,10 +26,7 @@ app.get('/api/*', (req, res) => {
       g /= amount;
       b /= amount;
 
-			res.send(
-			 `${Math.floor(r)},
-				${Math.floor(g)},
-				${Math.floor(b)}`);
+      res.send(`${Math.floor(r)},${Math.floor(g)},${Math.floor(b)}`);
     })
     .catch(err => {
       res.send(`error: ${err.message}`);
