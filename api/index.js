@@ -3,15 +3,13 @@ const express = require('express');
 const app = express();
 
 app.get('/api/*', (req, res) => { 
-	const url = req.params[0];
-	const queries = querystring.stringify(req.query);
-  fetch(url + "?" + queries)
-    .then(res=> res.blob())
+  fetch(req.params[0] + "?" + querystring.stringify(req.query))
+    .then(res => res.blob())
 		.then(blob => blob.arrayBuffer())
-		.then(arrayBuffer=> Buffer.from(arrayBuffer))
-    .then(buffer => {
-      const data = Uint8ClampedArray.from(buffer);
-      const len = data.length;
+		.then(arrayBuffer => Buffer.from(arrayBuffer))
+    .then(buffer => Uint8ClampedArray.from(buffer))
+		.then(data => {
+			const len = data.length;
       const nthPixel = 40;
       let r = 0;
       let g = 0;
@@ -25,8 +23,8 @@ app.get('/api/*', (req, res) => {
       r /= amount;
       g /= amount;
       b /= amount;
-	  
-	  res.send(data);
+		
+			res.send(data.length);
       // res.send(`${Math.floor(r)},${Math.floor(g)},${Math.floor(b)}`);
     })
     .catch(err => {
